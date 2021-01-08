@@ -193,11 +193,11 @@
 # print(other)
 
 
-letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-# items = (0, "a")
-# index, letter = items
-for index, letter in  enumerate(letters):
-    print(index, letter)
+# letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+# # items = (0, "a")
+# # index, letter = items
+# for index, letter in  enumerate(letters):
+#     print(index, letter)
 
 
 # # ADD
@@ -213,14 +213,233 @@ for index, letter in  enumerate(letters):
 
 # SORTING LISTS
 
-items = [
-    ("Product1", 10),
-    ("Product2", 9),
-    ("Product3", 12),
-]
+# items = [
+#     ("Product1", 10),
+#     ("Product2", 9),
+#     ("Product3", 12),
+# ]
 
-def sort_item(item):
-    return item[1]
+# #  One way
+# def sort_item(item):
+#     return item[1]
+#  Better way using lambda
+# items.sort(key=lambda item:item[1])
+# print(items)
 
-items.sort()
-print(items)
+
+#  MAP FUNCTIONS
+#  one way
+# prices = []
+# for item in items:
+#     prices.append(item[1])
+
+# another way
+# x = map(lambda item: item[1], items)
+# for item in x:
+#     print(item)
+
+
+# prices = list(map(lambda item: item[1], items))
+# print(prices)
+
+
+#  FILTERING FUNCTIONS
+# items = [
+#     ("Product1", 10),
+#     ("Product2", 9),
+#     ("Product3", 12),
+# ]
+
+# # filtered = list(filter(lambda item: item[1] >= 10, items))
+# # print(filtered)
+
+# # prices = [item[1] for item in items]
+
+# filtered = [item for item in items if item[1] >= 10]
+
+# Zip Function
+# list1 = [1, 2, 3]
+# list2 = [10, 20, 30]
+
+# print(list(zip(list1, list2)))
+
+
+
+# #  STACKS
+# browsing_session = []
+# browsing_session.append(1)
+# browsing_session.append(2)
+# browsing_session.append(3)
+# print(browsing_session)
+# last = browsing_session.pop()
+# print(last)
+# print(browsing_session)
+# print("redirect", browsing_session[-1])
+# if not browsing_session:
+#     print("disable")
+
+#  QUEUES
+# from collections import deque
+# queue = deque([])
+# queue.append(1)
+# queue.append(2)
+# queue.append(3)
+# queue.popleft()
+# print(queue)
+# if not queue:
+#     print("empty")
+
+#  TUPLES
+# point = 1, 2
+# print(type(point))
+
+# point = (1, 2) + (3, 4)
+# print(point)
+
+# point = (1, 2) * 3
+# print(point)
+
+# point = tuple("Hello Adam")
+# print(point)
+
+
+#  SWAPPING VARIABLES
+# x = 10
+# y = 11
+
+# z = x
+# x = y
+# y = z
+
+# print("x", x)
+# print("y", y)
+
+# x, y =  y, x
+
+
+#  ARRAYS
+# from array import array
+
+# array("i", [1,2,3])
+# numbers[0]
+
+
+#  SETS
+# numbers = [1,1,2,3,4]
+# # uniques = set(numbers)
+# # second = {1, 4}
+# # second.add(5)
+# # second.remove(5)
+# # len(second)
+# # print(uniques)
+# first = set(numbers)
+# second = {1, 5}
+# print(first | second)
+# print(first & second)
+# print(first - second)
+# print(first ^ second)
+
+# if 1 in first:
+#     print("yes")
+
+
+# DICTIONARY iterating over a dictionary
+# point = {"x": 1, "y": 2}
+# point = dict(x=1, y=2)
+# print(point["x"])
+# point["x"] = 10
+# point["z"] = 20
+# print(point)
+# if "a" in point:
+#     print(point["a"])
+# print(point.get("a", 0))
+# del point["x"]
+# print(point)
+# for key in point:
+#     print(key, point[key])
+# # Printing a Tuple
+# for x in point.items():
+#     print(x)
+# # UNPACKING THEM
+# for key, value in point.items():
+#     print(key, value)
+
+
+# List Comprehension
+# values = []
+# for x in range(5):
+#     values.append(x * 2)
+
+
+# values = {}
+# for x in range(5):
+#     values[x[] = x * 2
+# CHANGE to this below
+# dictionaries
+# values = {x: x * 2 for x in range(5)}
+
+# print(values)
+
+# Generator Expressions
+# from sys import getsizeof
+
+# values = [x * 2 for x in range(10)]
+# for x in values:
+#     print(x)
+
+# values = (x * 2 for x in range(10))
+# for x in values:
+#     print(x)
+
+# values = (x * 2 for x in range(100000))
+# print("gen:", getsizeof(values))
+
+# values = [x * 2 for x in range(100000)]
+# print("list:", getsizeof(values))
+
+# UNPACKING OPERATOR
+# numbers = [1, 2, 3]
+# print(numbers)
+# print(*numbers)
+# print(1, 2, 3)
+
+# values = list(range(5))
+# values = [*range(5), *"Hello"]
+# print(values)
+
+# first = [1, 2]
+# second = [3]
+# values = [*first, "a", *second, *"Hello"]
+# print(values)
+
+# from pprint import pprint
+# sentence = "This is a common interview question"
+
+# char_frequency = {}
+# for char in sentence:
+#     if char in char_frequency:
+#         char_frequency[char] += 1
+#     else:
+#         char_frequency[char] = 1
+# # print(char_frequency)
+# # pprint(char_frequency, width=1)
+
+# char_frequency_sorted = (
+#     sorted(char_frequency.items(), 
+#     key=lambda kv:kv[1], 
+#     reverse= True)
+# )
+# print(char_frequency_sorted[0])
+
+
+# Handling Exceptions
+# try:
+#     age = int(input("Age: "))
+#     xfactor = 10 / age
+# except (ValueError, ZeroDivisionError):
+#     print("You didn't enter a valid age.")
+#     # print(ex)
+#     # print(type(ex))
+# else:
+#     print("No exceptions were thrown")
+
