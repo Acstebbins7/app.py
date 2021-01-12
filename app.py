@@ -443,3 +443,188 @@
 # else:
 #     print("No exceptions were thrown")
 
+# CLEANING THIS UP
+# try:
+#     file = open("app.py")
+#     age = int(input("Age: "))
+#     xfactor = 10 / age
+# except (ValueError, ZeroDivisionError):
+#     print("You didn't enter a valid age.")
+# else:
+#     print("No exceptions were thrown.")
+# finally:
+#     file.close()
+
+# RAISING EXCEPTIONS dont use 
+
+# def calculate_xfactor(age):
+#     if age <= 0:
+#         raise ValueError("Age cannot be zero or less.")
+#     return 10 / age
+
+
+# try:
+#     calculate_xfactor(-1)
+# except ValueError as error:
+#     print(error)
+
+# COST OF RAISING EXCEPTIONS
+# from timeit import timeit
+
+# code1 = """
+# def calculate_xfactor(age):
+#     if age <= 0:
+#         raise ValueError("Age cannot be zero or less.")
+#     return 10 / age
+
+
+# try:
+#     calculate_xfactor(-1)
+# except ValueError as error:
+#     pass
+# """
+
+# code2 = """
+# def calculate_xfactor(age):
+#     if age <= 0:
+#         return None
+#     return 10 / age
+
+
+# xfactor = calculate_xfactor(-1)
+# if xfactor == None:
+#     pass
+# """
+
+# print("first code=", timeit(code1, number=100))
+# print("second code=", timeit(code2, number=100))
+
+# CLASSES AND CONSTRUCTORS
+
+# class Point:
+#     default_color = "red"
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+
+#     def draw(self):
+#         print(f"Point ({self.x}, {self.y})")
+#         # print("draw")
+# # CLASS ATTRIBUTES
+# point = Point(1, 2)
+# print(point.default_color)
+# print(Point.default_color)
+# point.draw()
+# # print(point.x)
+# # print(point.y)
+# # print(type(point))
+# # print(isinstance(point, Point))
+
+# another = Point(3, 4)
+# another.draw()
+
+# point1 = Point(5, 6)
+# point1.draw()
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+
+#     # @classmethod
+#     # def zero(cls):
+#     #     return cls(0, 0)
+
+#     def __str__(self):
+#         return f"({self.x}, {self.y})"
+
+
+#     def draw(self):
+#         print(f"Point ({self.x}, {self.y})")
+
+
+# # point = Point.zero()
+# # point.draw()
+
+
+# point = Point(1, 2)
+# print(str(point))
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+
+#     def __eq__(self, other):
+#         return self.x == other.x and self.y == other.y
+
+#     def __gt__(self, other):
+#         return self.x > other.x and self.y > other.y
+
+
+# point = Point(10, 20)    
+# other = Point(1, 2)
+# print(point > other)
+# print(point < other)
+# print(point == other)
+
+
+# MAKING CUSTOM CONTAINERS
+
+# class TagCloud:
+
+# cloud = TagCloud()
+# len(cloud)
+# cloud["python"] = 10
+# for tag in cloud:
+#     print(tag)
+
+# class TagCloud:
+#     def __init__(self):
+#         self.tags = {}
+
+#     def add(self, tag):
+#         self.tags[tag.lower()] = self.tags.get(tag.lower(), 0) + 1
+
+#     def __getitem__(self, tag):
+#         return self.tags.get(tag.lower(), 0)
+
+#     def __setitem__(self, tag, count):
+#         self.tags[tag.lower()] = count
+
+#     def __len__(self):
+#         return len(self.tags)
+
+#     def __iter__(self):
+#         return iter(self.tags)
+    
+# cloud = TagCloud()
+# cloud["python"] = 10
+# len(cloud)
+# cloud.add("python")
+# print(cloud.tags)
+
+
+
+# PROPERTIES
+
+# class Product:
+#     def __init__(self, price):
+#         self.pice = price
+
+#     @property
+#     def price(self):
+#         return self.__price
+
+#     @price.setter
+#     def price(self, value):
+#         if value < 0:
+#             raise ValueError("Price cannot be negative.")
+#         self.__price = value
+
+# #     price = property(get_price, set_price)
+
+
+# product = Product(10)
+# print(product.price)
